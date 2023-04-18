@@ -49,12 +49,23 @@ public class PersonaController {
         return personaService.create(persona);
     }
 
-    @PutMapping("personas/editar/{id}")
+   /* @PutMapping("personas/editar/{id}")
     Persona update(
             @RequestBody Persona persona,
             @PathVariable("id") Long id
     ) {
         return personaService.update(persona, id);
+    }*/
+    
+    @PutMapping("/personas/editar/{id}")
+    public Persona editPersona(@PathVariable("id") Long id,
+                              @RequestBody Persona persona)
+    {
+        
+        persona.setId(id);
+    
+    personaService.create(persona);
+    return persona;
     }
 
     @DeleteMapping("personas/borrar/{id}")
